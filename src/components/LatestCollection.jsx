@@ -5,17 +5,26 @@ import { useState, useEffect } from "react";
 
 const LatestCollection = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch("/api/products");
       const data = await response.json();
       setProducts(data.products);
-      console.log(products);
+      setLoading(false);
     };
 
     fetchProducts();
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-96">
+        <p className="text-2xl">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-center justify-center gap-2 px-4 sm:px-8 md:px-16 py-10 max-w-7xl mx-auto">
