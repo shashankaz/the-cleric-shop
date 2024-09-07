@@ -5,7 +5,7 @@ const Blog = () => {
     <div className="px-4 sm:px-8 md:px-16 max-w-7xl mx-auto min-h-screen py-8">
       <h1 className="text-3xl font-medium mb-6">Blog Coming Soon!</h1>
       <p className="mb-6">
-        We're excited to announce that our blog is on its way! We&apos;re
+        We&apos;re excited to announce that our blog is on its way! We&apos;re
         working hard to bring you insightful and engaging content related to the
         latest trends, product reviews, and shopping tips.
       </p>

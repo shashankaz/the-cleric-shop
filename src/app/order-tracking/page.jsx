@@ -21,8 +21,8 @@ const OrderTracking = () => {
           </li>
           <li>
             <strong>Visit the Retailer&apos;s Website:</strong> Go to the
-            retailer's website and navigate to their order tracking page. Enter
-            your order number or tracking number to get the status of your
+            retailer&apos;s website and navigate to their order tracking page.
+            Enter your order number or tracking number to get the status of your
             shipment.
           </li>
           <li>

@@ -15,10 +15,10 @@ const Careers = () => {
           experience.
         </p>
         <p className="mb-4">
-          Explore our current job openings and see if there's a role that fits
-          your skills and interests. If you&apos;re enthusiastic about working
-          in a dynamic and innovative environment, we&apos;d love to hear from
-          you!
+          Explore our current job openings and see if there&apos;s a role that
+          fits your skills and interests. If you&apos;re enthusiastic about
+          working in a dynamic and innovative environment, we&apos;d love to
+          hear from you!
         </p>
       </section>
 
