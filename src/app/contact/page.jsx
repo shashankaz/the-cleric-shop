@@ -82,10 +82,10 @@ const Contact = () => {
           id="message"
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          rows="4"
+          rows="7"
           required
           placeholder="Enter your message"
-          className="w-full px-2 py-2 bg-gray-100 rounded-md outline-none"
+          className="w-full px-2 py-2 bg-gray-100 rounded-md outline-none resize-none"
         ></textarea>
         <button
           type="submit"
