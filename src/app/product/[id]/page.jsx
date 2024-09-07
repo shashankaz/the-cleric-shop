@@ -4,6 +4,7 @@ import { Star, Truck, RefreshCcw } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import ProductCard from "@/components/ProductCard";
+import Link from "next/link";
 
 const images = [
   {
@@ -133,7 +134,7 @@ const ProductPage = ({ params }) => {
             </div>
           </div>
           <button className="border rounded px-4 py-2 text-center bg-black text-white border-black hover:bg-gray-800 text-sm md:text-base">
-            Buy Now
+            <Link href="/">Buy Now</Link>
           </button>
           <div className="flex justify-between text-gray-700 text-xs sm:text-sm md:text-base">
             {product.shipping.freeShipping && (
@@ -182,7 +183,7 @@ const ProductPage = ({ params }) => {
       </div>
       <div className="py-10">
         <div>
-          <h1 className="text-2xl md:text-3xl font-medium mb-6">
+          <h1 className="text-xl md:text-2xl font-medium mb-6">
             Related Products
           </h1>
         </div>
