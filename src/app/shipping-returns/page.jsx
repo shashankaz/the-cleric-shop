@@ -7,9 +7,9 @@ const ShippingReturns = () => {
         <h3 className="text-xl font-semibold mb-4">Shipping Policy</h3>
         <p className="mb-4">
           Please note that we are an affiliate site, meaning that we provide
-          links to products on other retailers' websites. As such, the shipping
-          of products is handled by the respective retailer. Here are the
-          general guidelines:
+          links to products on other retailers&apos; websites. As such, the
+          shipping of products is handled by the respective retailer. Here are
+          the general guidelines:
         </p>
         <ul className="list-disc list-inside mb-4 flex flex-col gap-2">
           <li>
