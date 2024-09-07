@@ -31,7 +31,7 @@ const Mens = () => {
       <div></div>
       <div className="py-8">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-medium">Men's Collection</h1>
+          <h1 className="text-3xl font-medium">Men&apos;s Collection</h1>
           <select
             aria-label="Sort products by"
             className="border border-gray-300 rounded-md p-2"
