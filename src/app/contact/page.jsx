@@ -61,7 +61,7 @@ const Contact = () => {
         ></textarea>
         <button
           type="submit"
-          className="px-4 py-2 bg-black text-white font-medium rounded-md mt-4"
+          className="p-3 bg-gray-900 border-gray-900 text-white font-medium rounded-md mt-4"
         >
           Send Message
         </button>
