@@ -1,23 +1,51 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Contact = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log("Form data submitted:", { name, email, message });
+    setLoading(true);
 
-    setStatus("Your message has been sent successfully!");
-    setName("");
-    setEmail("");
-    setMessage("");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, message }),
+      });
+
+      const result = await response.json();
+
+      setStatus("Your message has been sent successfully!");
+
+      if (!result.error) {
+        setName("");
+        setEmail("");
+        setMessage("");
+        setLoading(false);
+      }
+    } catch (err) {
+      console.error(err);
+    }
   };
+
+  useEffect(() => {
+    if (status) {
+      const timer = setTimeout(() => {
+        setStatus(null);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   return (
     <div className="px-4 sm:px-8 md:px-16 max-w-7xl mx-auto min-h-screen py-8">
@@ -61,6 +89,7 @@ const Contact = () => {
         ></textarea>
         <button
           type="submit"
+          disabled={loading}
           className="p-3 bg-gray-900 border-gray-900 text-white font-medium rounded-md mt-4"
         >
           Send Message
