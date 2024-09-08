@@ -133,7 +133,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-between gap-4 text-sm">
+        <div className="flex flex-col-reverse md:flex-row justify-between gap-4 text-sm">
           <h1>
             &copy; {new Date().getFullYear()} The Cleric. All rights reserved.
           </h1>
