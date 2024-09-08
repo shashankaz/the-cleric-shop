@@ -93,10 +93,23 @@ const ProductPage = ({ params }) => {
         <div className="min-h-[452px] w-full md:w-1/2 flex flex-col gap-4 px-4 md:px-6">
           <h1 className="text-2xl md:text-3xl font-bold">{product.title}</h1>
           <div className="flex items-center gap-2">
-            <div className="flex gap-1 text-yellow-500">
-              {[...Array(5)].map((_, index) => (
-                <Star key={index} className="text-sm md:text-base" />
-              ))}
+            <div className="flex items-center">
+              <div className="flex items-center justify-center gap-1 text-xs font-semibold bg-green-700 p-1 text-white rounded">
+                4.4
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="w-4 h-4"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M12 2.25l2.391 4.83 5.334.775-3.868 3.765.912 5.323-4.769-2.507-4.769 2.507.912-5.323L2.275 8.855l5.334-.775L12 2.25z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </div>
             </div>
             <p className="text-xs sm:text-sm md:text-base text-gray-500">
               ({product.reviews.length} reviews)
