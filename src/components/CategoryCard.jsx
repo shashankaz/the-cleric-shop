@@ -13,7 +13,7 @@ const CategoryCard = ({ imageUrl, altText, src }) => {
             className="absolute inset-0 object-cover"
             priority
           />
-          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40 text-white text-sm md:text-xl font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          <div className="absolute inset-0 flex items-center justify-center backdrop-blur-sm text-white text-sm md:text-xl font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             {altText}
           </div>
         </div>
