@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { User, Heart, Menu, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 const categories = [
   "Mens",
@@ -51,9 +52,16 @@ const Navbar = () => {
         </div>
         <div>
           <Link href="/">
-            <h1 className="font-mono uppercase md:text-3xl text-2xl font-bold">
+            {/* <h1 className="font-mono uppercase md:text-3xl text-2xl font-bold">
               The Cleric
-            </h1>
+            </h1> */}
+            <Image
+              src="/logo.png"
+              width={160}
+              height={160}
+              className="-translate-y-3"
+              draggable="false"
+            />
           </Link>
         </div>
         <div className="flex gap-4">

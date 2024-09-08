@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FaFacebook, FaInstagram } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
@@ -6,7 +7,14 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="flex flex-col gap-8 px-4 sm:px-8 md:px-16 max-w-7xl mx-auto py-10">
-        <h1 className="md:text-3xl text-2xl uppercase font-mono">The Cleric</h1>
+        {/* <h1 className="md:text-3xl text-2xl uppercase font-mono">The Cleric</h1> */}
+        <Image
+          src="/logo.png"
+          width={140}
+          height={140}
+          className="-translate-x-5 filter invert"
+          draggable="false"
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
