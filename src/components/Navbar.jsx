@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { User, Heart, Menu, X } from "lucide-react";
+import { User, Heart, ShoppingCart, Menu, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 
@@ -70,6 +70,9 @@ const Navbar = () => {
           </Link>
           <Link href="/profile">
             <User strokeWidth={1.5} size={20} />
+          </Link>
+          <Link href="/cart">
+            <ShoppingCart strokeWidth={1.5} size={20} />
           </Link>
         </div>
       </div>

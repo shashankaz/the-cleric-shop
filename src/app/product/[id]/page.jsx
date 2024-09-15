@@ -4,7 +4,6 @@ import { Star, Truck, RefreshCcw } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import ProductCard from "@/components/ProductCard";
-import Link from "next/link";
 
 const images = [
   {
@@ -146,9 +145,14 @@ const ProductPage = ({ params }) => {
               ))}
             </div>
           </div>
-          <button className="border rounded px-4 py-2 text-center bg-black text-white border-black hover:bg-gray-800 text-sm md:text-base">
-            <Link href="/">Buy Now</Link>
-          </button>
+          <div className="w-full flex gap-3">
+            <button className="border rounded px-4 py-2 text-center bg-black text-white border-black hover:bg-gray-800 text-sm md:text-base w-1/2">
+              Add to Wishlist
+            </button>
+            <button className="border rounded px-4 py-2 text-center bg-black text-white border-black hover:bg-gray-800 text-sm md:text-base w-1/2">
+              Add to Cart
+            </button>
+          </div>
           <div className="flex justify-between text-gray-700 text-xs sm:text-sm md:text-base">
             {product.shipping.freeShipping && (
               <p className="flex items-center gap-2">
