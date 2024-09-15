@@ -83,7 +83,7 @@ const productSchema = new Schema(
         default: true,
       },
       returnPolicy: {
-        type: String,
+        type: Boolean,
         default: true,
       },
     },
