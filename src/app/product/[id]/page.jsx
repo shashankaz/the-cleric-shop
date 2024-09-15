@@ -4,6 +4,7 @@ import { Star, Truck, RefreshCcw } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import ProductCard from "@/components/ProductCard";
+import { useUser } from "@clerk/nextjs";
 
 const images = [
   {
@@ -29,9 +30,52 @@ const ProductPage = ({ params }) => {
   const [product, setProduct] = useState(null);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
+
+  const { user } = useUser();
+  const userId = user?.id;
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+  };
+
+  const handleAddToCart = async () => {
+    if (!userId) {
+      alert("Please sign in to add items to your cart.");
+      return;
+    }
+
+    if (!selectedSize || !selectedColor) {
+      alert("Please select a size and color before adding to the cart.");
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/cart/${userId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          _id: product._id,
+          name: product.title,
+          price: product.price,
+          size: selectedSize,
+          color: selectedColor,
+          freeDelivery: product.shipping.freeShipping,
+          quantity: 1,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Product added to cart successfully!");
+      } else {
+        alert("Failed to add product to cart.");
+      }
+    } catch (error) {
+      console.error("Error adding product to cart:", error);
+    }
   };
 
   useEffect(() => {
@@ -39,7 +83,6 @@ const ProductPage = ({ params }) => {
       const response = await fetch("/api/products");
       const data = await response.json();
       setProducts(data.products);
-      console.log(products);
     };
 
     fetchProducts();
@@ -54,7 +97,7 @@ const ProductPage = ({ params }) => {
     };
 
     fetchProduct();
-  }, []);
+  }, [params.id]);
 
   if (loading) {
     return (
@@ -124,10 +167,11 @@ const ProductPage = ({ params }) => {
               {product.colors.map((color, index) => (
                 <button
                   key={index}
+                  onClick={() => setSelectedColor(color)}
                   className={`h-6 w-6 rounded-full border ${color
                     .toLowerCase()
                     .split(" ")
-                    .join()}`}
+                    .join()} ${selectedColor === color ? "border-black" : ""}`}
                 ></button>
               ))}
             </div>
@@ -138,7 +182,10 @@ const ProductPage = ({ params }) => {
               {product.sizes.map((size, index) => (
                 <button
                   key={index}
-                  className="py-2 px-4 border border-black rounded text-sm md:text-base hover:bg-gray-100"
+                  onClick={() => setSelectedSize(size)}
+                  className={`py-2 px-4 border border-black rounded text-sm md:text-base hover:bg-gray-100 ${
+                    selectedSize === size ? "bg-gray-200" : ""
+                  }`}
                 >
                   {size}
                 </button>
@@ -149,7 +196,10 @@ const ProductPage = ({ params }) => {
             <button className="border rounded px-4 py-2 text-center bg-black text-white border-black hover:bg-gray-800 text-sm md:text-base w-1/2">
               Add to Wishlist
             </button>
-            <button className="border rounded px-4 py-2 text-center bg-black text-white border-black hover:bg-gray-800 text-sm md:text-base w-1/2">
+            <button
+              onClick={handleAddToCart}
+              className="border rounded px-4 py-2 text-center bg-black text-white border-black hover:bg-gray-800 text-sm md:text-base w-1/2"
+            >
               Add to Cart
             </button>
           </div>
