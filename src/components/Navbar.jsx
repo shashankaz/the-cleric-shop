@@ -5,7 +5,6 @@ import { User, Heart, ShoppingCart, Menu, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useUser } from "@clerk/nextjs";
 
 const categories = [
   "Mens",
@@ -22,26 +21,6 @@ const Navbar = () => {
   const sidebarRef = useRef(null);
 
   const pathname = usePathname();
-
-  const [cartItems, setCartItems] = useState([]);
-  const { user } = useUser();
-  const userId = user?.id;
-
-  useEffect(() => {
-    const fetchCartItems = async () => {
-      try {
-        const response = await fetch(`/api/cart/${userId}`);
-        const data = await response.json();
-        setCartItems(data.cart.items);
-      } catch (error) {
-        console.error("Error fetching cart items:", error);
-      }
-    };
-
-    if (userId) {
-      fetchCartItems();
-    }
-  }, [userId]);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -71,14 +50,22 @@ const Navbar = () => {
   return (
     <div className="relative">
       <div className="flex justify-between items-center px-4 sm:px-8 md:px-16 max-w-7xl mx-auto h-20">
-        <div onClick={handleToggle} className="cursor-pointer">
-          <Menu strokeWidth={1.5} size={20} />
+        <div className="flex gap-4">
+          <Menu
+            strokeWidth={1.5}
+            size={20}
+            onClick={handleToggle}
+            className="cursor-pointer"
+          />
+          <Menu strokeWidth={1.5} size={20} className="opacity-0" />
+          <Menu
+            strokeWidth={1.5}
+            size={20}
+            className="opacity-0 hidden sm:flex"
+          />
         </div>
         <div>
           <Link href="/">
-            {/* <h1 className="font-mono uppercase md:text-3xl text-2xl font-bold">
-              The Cleric
-            </h1> */}
             <Image
               src="/logo.png"
               width={160}
@@ -95,13 +82,8 @@ const Navbar = () => {
           <Link href="/profile">
             <User strokeWidth={1.5} size={20} />
           </Link>
-          <Link href="/cart" className="relative inline-flex items-center">
+          <Link href="/cart">
             <ShoppingCart strokeWidth={1.5} size={20} />
-            {cartItems.length > 0 && (
-              <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">
-                {cartItems.length}
-              </div>
-            )}
           </Link>
         </div>
       </div>
@@ -118,8 +100,14 @@ const Navbar = () => {
             } sm:w-72 md:w-96 w-full`}
           >
             <div className="flex justify-between items-center py-6 sm:py-8 px-4 sm:px-8 md:px-16">
-              <div onClick={handleClose} className="cursor-pointer">
-                <X strokeWidth={1.5} size={20} />
+              <div className="flex items-center">
+                <X
+                  strokeWidth={1.5}
+                  size={20}
+                  onClick={handleClose}
+                  className="cursor-pointer"
+                />
+                <X strokeWidth={1.5} size={20} className="opacity-0" />
               </div>
               <div>
                 <Link href="/">
@@ -134,6 +122,9 @@ const Navbar = () => {
                 </Link>
                 <Link href="/profile">
                   <User strokeWidth={1.5} size={20} />
+                </Link>
+                <Link href="/cart">
+                  <ShoppingCart strokeWidth={1.5} size={20} />
                 </Link>
               </div>
             </div>

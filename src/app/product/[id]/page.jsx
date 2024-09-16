@@ -6,6 +6,7 @@ import ProductDetails from "./ProductDetails";
 import ProductTabs from "./ProductTabs";
 import RelatedProducts from "./RelatedProducts";
 import { useUser } from "@clerk/nextjs";
+import { Toaster, toast } from "sonner";
 
 const ProductPage = ({ params }) => {
   const [activeTab, setActiveTab] = useState("description");
@@ -24,12 +25,12 @@ const ProductPage = ({ params }) => {
 
   const handleAddToCart = async () => {
     if (!userId) {
-      alert("Please sign in to add items to your cart.");
+      toast.error("Please sign in to add items to your cart.");
       return;
     }
 
     if (!selectedSize || !selectedColor) {
-      alert("Please select a size and color before adding to the cart.");
+      toast.error("Please select a size and color before adding to the cart.");
       return;
     }
 
@@ -51,9 +52,9 @@ const ProductPage = ({ params }) => {
       });
 
       if (response.ok) {
-        alert("Product added to cart successfully!");
+        toast.success("Product added to cart successfully!");
       } else {
-        alert("Failed to add product to cart.");
+        toast.error("Failed to add product to cart.");
       }
     } catch (error) {
       console.error("Error adding product to cart:", error);
@@ -62,7 +63,7 @@ const ProductPage = ({ params }) => {
 
   const handleAddToWishlist = async () => {
     if (!userId) {
-      alert("Please sign in to add items to your wishlist.");
+      toast.error("Please sign in to add items to your wishlist.");
       return;
     }
 
@@ -80,9 +81,9 @@ const ProductPage = ({ params }) => {
       });
 
       if (response.ok) {
-        alert("Product added to wishlist successfully!");
+        toast.success("Product added to wishlist successfully!");
       } else {
-        alert("Failed to add product to wishlist.");
+        toast.error("Failed to add product to wishlist.");
       }
     } catch (error) {
       console.error("Error adding product to wishlist:", error);
@@ -134,6 +135,7 @@ const ProductPage = ({ params }) => {
       </div>
       <ProductTabs activeTab={activeTab} handleTabClick={handleTabClick} />
       <RelatedProducts products={products} />
+      <Toaster position="top-center" />
     </div>
   );
 };

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
+import { Toaster, toast } from "sonner";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -40,8 +41,10 @@ const Cart = () => {
       if (!response.ok) throw new Error("Failed to delete item");
       const data = await response.json();
       setCartItems(data.cart.items);
+      toast.success("Item removed from cart successfully");
     } catch (error) {
       setError("Error deleting item from cart");
+      toast.error("Failed to remove item from cart");
     } finally {
       setLoading(false);
     }
@@ -60,8 +63,10 @@ const Cart = () => {
       if (!response.ok) throw new Error("Failed to update qunatity");
       const data = await response.json();
       setCartItems(data.cart.items);
+      toast.success("Quantity updated successfully");
     } catch (error) {
       setError("Error update qunatity in cart");
+      toast.error("Failed to update quantity in cart");
     } finally {
       setLoading(false);
     }
@@ -172,6 +177,8 @@ const Cart = () => {
           Proceed to Checkout
         </button>
       </div>
+
+      <Toaster position="top-center" />
     </div>
   );
 };
