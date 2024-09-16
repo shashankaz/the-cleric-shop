@@ -1,6 +1,6 @@
 "use client";
 
-import { useUser } from "@clerk/nextjs";
+import { SignOutButton, useUser } from "@clerk/nextjs";
 
 const Profile = () => {
   const { user } = useUser();
@@ -14,15 +14,20 @@ const Profile = () => {
   }
 
   const { emailAddresses, imageUrl, lastSignInAt } = user;
-  const primaryEmail = emailAddresses.length > 0 ? emailAddresses[0].emailAddress : "No email address available";
-  const formattedLastSignIn = lastSignInAt ? new Date(lastSignInAt).toLocaleString() : "No sign-in data available";
+  const primaryEmail =
+    emailAddresses.length > 0
+      ? emailAddresses[0].emailAddress
+      : "No email address available";
+  const formattedLastSignIn = lastSignInAt
+    ? new Date(lastSignInAt).toLocaleString()
+    : "No sign-in data available";
 
   return (
     <div className="px-4 sm:px-8 md:px-16 py-6 max-w-md mx-auto min-h-screen">
       <div className="flex flex-col items-center text-center">
-        <img 
-          src={imageUrl || "https://via.placeholder.com/150"} 
-          alt="Profile" 
+        <img
+          src={imageUrl || "https://via.placeholder.com/150"}
+          alt="Profile"
           className="w-36 h-36 rounded-full border-2 border-gray-300 object-cover mb-4"
         />
         <h1 className="text-2xl md:text-3xl font-bold mb-4">Profile</h1>
@@ -32,6 +37,9 @@ const Profile = () => {
         <p className="text-lg font-medium">
           <strong>Last Sign-In:</strong> {formattedLastSignIn}
         </p>
+        <div className="px-4 py-2 bg-black text-white rounded-lg mt-8">
+          <SignOutButton />
+        </div>
       </div>
     </div>
   );
