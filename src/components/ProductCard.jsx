@@ -4,21 +4,25 @@ import Link from "next/link";
 const ProductCard = ({ product }) => {
   return (
     <Link href={`/product/${product._id}`}>
-      <div className="flex flex-col h-72">
-        <div className="h-4/5 w-52 overflow-hidden">
+      <div className="bg-white shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow duration-200 ease-in-out">
+        <div className="relative h-40 sm:h-48 mb-4">
           <Image
-            src="https://images.pexels.com/photos/2065954/pexels-photo-2065954.jpeg"
-            alt="Product"
-            width={100}
-            height={100}
-            title={product.title}
-            className="h-full w-full object-cover"
+            src={
+              product.image ||
+              "https://images.pexels.com/photos/2065954/pexels-photo-2065954.jpeg"
+            }
+            alt={product.title}
+            layout="fill"
+            objectFit="cover"
+            className="rounded-t-lg"
           />
         </div>
-        <div>
-          <h1 className="text-sm mt-3 truncate">{product.title}</h1>
-          <p className="text-sm mt-1 font-semibold">${product.price}</p>
-        </div>
+        <h2 className="text-md sm:text-base font-semibold mb-2 text-gray-800 truncate">
+          {product.title}
+        </h2>
+        <p className="text-base sm:text-lg font-bold text-gray-900">
+          ${product.price}
+        </p>
       </div>
     </Link>
   );

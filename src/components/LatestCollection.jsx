@@ -35,7 +35,7 @@ const LatestCollection = () => {
           must-have items. Shop now to find your next favorite piece.
         </p>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 h-72 overflow-hidden">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 h-72 sm:h-80 overflow-hidden">
         {products.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}
