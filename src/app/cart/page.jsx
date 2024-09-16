@@ -27,6 +27,46 @@ const Cart = () => {
     }
   }, [userId]);
 
+  const handleDelete = async (productId) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`/api/cart/${userId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ productId }),
+      });
+      if (!response.ok) throw new Error("Failed to delete item");
+      const data = await response.json();
+      setCartItems(data.cart.items);
+    } catch (error) {
+      setError("Error deleting item from cart");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleUpdate = async (productId, quantity) => {
+    try {
+      setLoading(true);
+      const response = await fetch(`/api/cart/${userId}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ _id: productId, quantity: quantity }),
+      });
+      if (!response.ok) throw new Error("Failed to update qunatity");
+      const data = await response.json();
+      setCartItems(data.cart.items);
+    } catch (error) {
+      setError("Error update qunatity in cart");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   if (loading) {
     return (
       <p className="flex items-center justify-center min-h-screen text-2xl">
@@ -93,17 +133,35 @@ const Cart = () => {
                     : "Delivery Charges Apply"}
                 </p>
                 <div className="flex gap-2 mt-2">
-                  <button className="border px-2 py-1 rounded text-sm">
+                  <button
+                    onClick={() => {
+                      handleUpdate(item.product._id, item.quantity - 1);
+                    }}
+                    className="border px-2 py-1 rounded text-sm"
+                    disabled={item.quantity === 1}
+                  >
                     -
                   </button>
                   <span>{item.quantity}</span>
-                  <button className="border px-2 py-1 rounded text-sm">
+                  <button
+                    onClick={() => {
+                      handleUpdate(item.product._id, item.quantity + 1);
+                    }}
+                    className="border px-2 py-1 rounded text-sm"
+                  >
                     +
                   </button>
                 </div>
               </div>
             </div>
-            <button className="text-red-500 hover:text-red-700">Remove</button>
+            <button
+              onClick={() => {
+                handleDelete(item.product._id);
+              }}
+              className="text-red-500 hover:text-red-700"
+            >
+              Remove
+            </button>
           </div>
         ))}
       </div>

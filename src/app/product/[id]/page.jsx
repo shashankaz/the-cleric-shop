@@ -60,6 +60,35 @@ const ProductPage = ({ params }) => {
     }
   };
 
+  const handleAddToWishlist = async () => {
+    if (!userId) {
+      alert("Please sign in to add items to your wishlist.");
+      return;
+    }
+
+    try {
+      const response = await fetch(`/api/wishlist/${userId}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          _id: product._id,
+          name: product.title,
+          price: product.price,
+        }),
+      });
+
+      if (response.ok) {
+        alert("Product added to wishlist successfully!");
+      } else {
+        alert("Failed to add product to wishlist.");
+      }
+    } catch (error) {
+      console.error("Error adding product to wishlist:", error);
+    }
+  };
+
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch("/api/products");
@@ -100,6 +129,7 @@ const ProductPage = ({ params }) => {
           selectedSize={selectedSize}
           setSelectedSize={setSelectedSize}
           handleAddToCart={handleAddToCart}
+          handleAddToWishlist={handleAddToWishlist}
         />
       </div>
       <ProductTabs activeTab={activeTab} handleTabClick={handleTabClick} />

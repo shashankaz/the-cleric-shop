@@ -4,6 +4,8 @@ import Link from "next/link";
 import { User, Heart, ShoppingCart, Menu, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { useUser } from "@clerk/nextjs";
 
 const categories = [
   "Mens",
@@ -18,6 +20,28 @@ const categories = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const sidebarRef = useRef(null);
+
+  const pathname = usePathname();
+
+  const [cartItems, setCartItems] = useState([]);
+  const { user } = useUser();
+  const userId = user?.id;
+
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const response = await fetch(`/api/cart/${userId}`);
+        const data = await response.json();
+        setCartItems(data.cart.items);
+      } catch (error) {
+        console.error("Error fetching cart items:", error);
+      }
+    };
+
+    if (userId) {
+      fetchCartItems();
+    }
+  }, [userId]);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -71,8 +95,13 @@ const Navbar = () => {
           <Link href="/profile">
             <User strokeWidth={1.5} size={20} />
           </Link>
-          <Link href="/cart">
+          <Link href="/cart" className="relative inline-flex items-center">
             <ShoppingCart strokeWidth={1.5} size={20} />
+            {cartItems.length > 0 && (
+              <div className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs">
+                {cartItems.length}
+              </div>
+            )}
           </Link>
         </div>
       </div>
@@ -108,11 +137,18 @@ const Navbar = () => {
                 </Link>
               </div>
             </div>
-            <ul className="mt-4 px-4 sm:px-8 md:px-16">
+            <ul className="mt-4 px-4 sm:px-8 md:px-16 space-y-4">
               {categories.map((category, index) => (
                 <li key={index}>
                   <Link href={`/${category.toLowerCase()}`}>
-                    <p className="text-xl mb-6" onClick={handleClose}>
+                    <p
+                      className={`block text-xl px-4 py-2 rounded-md transition-colors duration-200 ${
+                        pathname === `/${category.toLowerCase()}`
+                          ? "bg-black text-white"
+                          : "hover:bg-gray-200"
+                      }`}
+                      onClick={handleClose}
+                    >
                       {category}
                     </p>
                   </Link>

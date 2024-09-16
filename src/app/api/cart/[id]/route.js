@@ -6,10 +6,22 @@ export const GET = async (request, { params }) => {
   try {
     await connectToDB();
 
-    const cart = await Cart.findOne({ userId: params.id });
+    let cart = await Cart.findOne({ userId: params.id });
 
-    if (!cart || cart.items.length === 0) {
-      return NextResponse.json({ message: "Cart is empty" }, { status: 204 });
+    if (!cart) {
+      cart = new Cart({ userId: params.id, items: [] });
+      await cart.save();
+      return NextResponse.json(
+        { message: "Cart is empty", cart },
+        { status: 200 }
+      );
+    }
+
+    if (cart.items.length === 0) {
+      return NextResponse.json(
+        { message: "Cart is empty", cart },
+        { status: 200 }
+      );
     }
 
     return NextResponse.json({ cart }, { status: 200 });
@@ -87,6 +99,50 @@ export const POST = async (request, { params }) => {
   }
 };
 
+export const PATCH = async (request, { params }) => {
+  try {
+    await connectToDB();
+
+    const { _id, quantity } = await request.json();
+
+    if (!_id || typeof quantity !== "number" || quantity < 1) {
+      return NextResponse.json(
+        { error: "Invalid input data" },
+        { status: 400 }
+      );
+    }
+
+    let cart = await Cart.findOne({ userId: params.id });
+
+    if (!cart) {
+      return NextResponse.json({ error: "Cart not found" }, { status: 404 });
+    }
+
+    const itemIndex = cart.items.findIndex((item) => item.product._id === _id);
+
+    if (itemIndex === -1) {
+      return NextResponse.json(
+        { error: "Item not found in cart" },
+        { status: 404 }
+      );
+    }
+
+    cart.items[itemIndex].quantity = quantity;
+
+    await cart.save();
+
+    return NextResponse.json(
+      { message: "Item quantity updated", cart },
+      { status: 200 }
+    );
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
+};
+
 export const DELETE = async (request, { params }) => {
   try {
     await connectToDB();
@@ -100,7 +156,7 @@ export const DELETE = async (request, { params }) => {
     }
 
     cart.items = cart.items.filter(
-      (item) => item.product.toString() !== productId
+      (item) => item.product._id.toString() !== productId
     );
 
     await cart.save();

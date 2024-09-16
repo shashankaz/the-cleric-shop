@@ -7,6 +7,7 @@ const ProductDetails = ({
   selectedSize,
   setSelectedSize,
   handleAddToCart,
+  handleAddToWishlist,
 }) => {
   return (
     <div className="min-h-[452px] w-full md:w-1/2 flex flex-col gap-4 px-4 md:px-6">
@@ -70,7 +71,10 @@ const ProductDetails = ({
         </div>
       </div>
       <div className="w-full flex gap-3">
-        <button className="border rounded px-4 py-2 text-center bg-black text-white border-black hover:bg-gray-800 text-sm md:text-base w-1/2">
+        <button
+          onClick={handleAddToWishlist}
+          className="border rounded px-4 py-2 text-center bg-black text-white border-black hover:bg-gray-800 text-sm md:text-base w-1/2"
+        >
           Add to Wishlist
         </button>
         <button
