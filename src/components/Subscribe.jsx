@@ -1,15 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Toaster, toast } from "sonner";
 
 const Subscribe = () => {
   const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [result, setResult] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(false);
 
     try {
       const response = await fetch("/api/newsletter", {
@@ -21,25 +19,18 @@ const Subscribe = () => {
       });
 
       const result = await response.json();
-      setResult(result);
 
       if (!result.error) {
         setEmail("");
-        setSubmitted(true);
+        toast.success(result.message);
+      } else {
+        toast.error(result.message);
       }
     } catch (err) {
       console.error(err);
+      toast.error("An unexpected error occurred.");
     }
   };
-
-  useEffect(() => {
-    if (submitted) {
-      const timer = setTimeout(() => {
-        setSubmitted(false);
-      }, 3000);
-      return () => clearTimeout(timer);
-    }
-  }, [submitted]);
 
   return (
     <div className="flex flex-col items-center justify-center px-4 sm:px-8 md:px-16 py-12 sm:py-20 max-w-7xl mx-auto">
@@ -69,11 +60,8 @@ const Subscribe = () => {
           Subscribe
         </button>
       </form>
-      {submitted && (
-        <p className="text-center mt-8 text-sm sm:text-base">
-          {result.message}
-        </p>
-      )}
+
+      <Toaster position="top-center" />
     </div>
   );
 };
