@@ -31,8 +31,8 @@ const TrendingProducts = () => {
       <div className="text-center mb-8">
         <h1 className="text-2xl sm:text-3xl mb-4">Trending Products</h1>
         <p className="text-sm sm:text-base max-w-2xl mx-auto">
-          Check out what's hot right now! Shop the trending products everyone is
-          talking about.
+          Check out what&apos;s hot right now! Shop the trending products
+          everyone is talking about.
         </p>
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 h-72 sm:h-80 overflow-hidden">

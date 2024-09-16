@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
 import { Toaster, toast } from "sonner";
+import { loadStripe } from "@stripe/stripe-js";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -67,6 +68,36 @@ const Cart = () => {
     } catch (error) {
       setError("Error update qunatity in cart");
       toast.error("Failed to update quantity in cart");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const stripePromise = loadStripe(
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+  );
+
+  const handleCheckout = async () => {
+    try {
+      setLoading(true);
+
+      const stripe = await stripePromise;
+
+      const response = await fetch("/api/checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ items: cartItems }),
+      });
+
+      const session = await response.json();
+
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+    } catch (error) {
+      setError("Error creating checkout session");
     } finally {
       setLoading(false);
     }

@@ -91,7 +91,6 @@ export const POST = async (request, { params }) => {
       { status: 200 }
     );
   } catch (error) {
-    console.error("Error in POST /api/cart:", error);
     return NextResponse.json(
       { error: "Internal Server Error" },
       { status: 500 }

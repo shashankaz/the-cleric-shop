@@ -12,6 +12,7 @@ const ProductImageGallery = ({
           height={1000}
           width={1000}
           className="h-full w-full object-cover"
+          draggable={false}
         />
       </div>
       <div className="flex justify-between gap-4 mt-4">
@@ -22,6 +23,7 @@ const ProductImageGallery = ({
               height={1000}
               width={1000}
               className="h-full w-full object-cover"
+              draggable={false}
             />
           </div>
         ))}
