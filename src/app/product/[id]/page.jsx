@@ -133,7 +133,7 @@ const ProductPage = ({ params }) => {
           handleAddToWishlist={handleAddToWishlist}
         />
       </div>
-      <ProductTabs activeTab={activeTab} handleTabClick={handleTabClick} />
+      {/* <ProductTabs activeTab={activeTab} handleTabClick={handleTabClick} /> */}
       <RelatedProducts products={products} />
       <Toaster position="top-center" />
     </div>
