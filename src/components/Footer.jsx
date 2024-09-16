@@ -10,6 +10,7 @@ const Footer = () => {
         {/* <h1 className="md:text-3xl text-2xl uppercase font-mono">The Cleric</h1> */}
         <Image
           src="/logo.png"
+          alt="The Cleric"
           width={140}
           height={140}
           className="-translate-x-5 filter invert"

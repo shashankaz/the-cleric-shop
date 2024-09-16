@@ -68,6 +68,7 @@ const Navbar = () => {
           <Link href="/">
             <Image
               src="/logo.png"
+              alt="The Cleric"
               width={160}
               height={160}
               className="-translate-y-3"
