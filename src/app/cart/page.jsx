@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useUser } from "@clerk/nextjs";
 import { Toaster, toast } from "sonner";
 import { loadStripe } from "@stripe/stripe-js";
+import Link from "next/link";
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -156,7 +157,9 @@ const Cart = () => {
                 )}
               </div>
               <div>
-                <h2 className="text-lg font-semibold">{item.product.name}</h2>
+                <Link href={`product/${item.product._id}`}>
+                  <h2 className="text-lg font-semibold">{item.product.name}</h2>
+                </Link>
                 <p className="text-sm text-gray-600">
                   ${item.product.price} x {item.quantity}
                 </p>
