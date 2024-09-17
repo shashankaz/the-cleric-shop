@@ -1,5 +1,9 @@
 import Link from "next/link";
 
+export const metadata = {
+  title: "Order Tracking",
+};
+
 const OrderTracking = () => {
   return (
     <div className="px-4 sm:px-8 md:px-16 max-w-7xl mx-auto min-h-screen py-8">

@@ -15,7 +15,6 @@ export const POST = async (request) => {
         currency: "usd",
         product_data: {
           name: item.product.name,
-          images: [item.product.image],
         },
         unit_amount: item.product.price * 100,
       },
@@ -26,8 +25,10 @@ export const POST = async (request) => {
       payment_method_types: ["card"],
       line_items: transformedItems,
       mode: "payment",
-      success_url: `${req.headers.origin}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${req.headers.origin}/cart`,
+      success_url: `${request.headers.get(
+        "origin"
+      )}/success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${request.headers.get("origin")}/cart`,
     });
 
     return NextResponse.json({ id: session.id }, { status: 200 });

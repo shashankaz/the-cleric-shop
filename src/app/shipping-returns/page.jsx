@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "Shipping & Returns",
+};
+
 const ShippingReturns = () => {
   return (
     <div className="px-4 sm:px-8 md:px-16 max-w-7xl mx-auto min-h-screen py-8">

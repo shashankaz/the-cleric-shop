@@ -7,7 +7,10 @@ import { ClerkProvider } from "@clerk/nextjs";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "The Cleric | Premium Goods and Unique Finds",
+  title: {
+    default: "The Cleric",
+    template: "%s | The Cleric",
+  },
   description:
     "Discover a curated selection of premium products at The Cleric. Shop our exclusive range of high-quality items and unique finds designed to elevate your lifestyle.",
 };

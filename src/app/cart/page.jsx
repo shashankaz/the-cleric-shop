@@ -98,7 +98,7 @@ const Cart = () => {
         sessionId: session.id,
       });
     } catch (error) {
-      setError("Error creating checkout session");
+      toast.error("Failed to create checkout session");
     } finally {
       setLoading(false);
     }
