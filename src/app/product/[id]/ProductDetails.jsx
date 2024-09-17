@@ -10,7 +10,7 @@ const ProductDetails = ({
   handleAddToWishlist,
 }) => {
   return (
-    <div className="min-h-[452px] w-full md:w-1/2 flex flex-col gap-4 px-4 md:px-6">
+    <div className="min-h-[452px] w-full md:w-1/2 flex flex-col gap-4 px-0 md:px-6">
       <h1 className="text-2xl md:text-3xl font-bold">{product.title}</h1>
       <div className="flex items-center gap-2">
         <div className="flex items-center">
@@ -49,7 +49,9 @@ const ProductDetails = ({
               className={`h-6 w-6 rounded-full border ${color
                 .toLowerCase()
                 .split(" ")
-                .join()} ${selectedColor === color ? "border-black" : ""}`}
+                .join()} ${
+                selectedColor === color ? "border-black border-2" : ""
+              }`}
             ></button>
           ))}
         </div>
@@ -62,7 +64,7 @@ const ProductDetails = ({
               key={index}
               onClick={() => setSelectedSize(size)}
               className={`py-2 px-4 border border-black rounded text-sm md:text-base hover:bg-gray-100 ${
-                selectedSize === size ? "bg-gray-200" : ""
+                selectedSize === size ? "bg-gray-200 hover:bg-gray-200" : ""
               }`}
             >
               {size}
