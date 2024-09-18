@@ -14,7 +14,7 @@ const Sustainability = () => {
       <section className="mb-8">
         <h3 className="text-xl font-semibold mb-4">Our Mission</h3>
         <p className="mb-4">
-          At The Cleric, we are dedicated to promoting sustainability in every
+          At Cleric, we are dedicated to promoting sustainability in every
           aspect of our business. As an affiliate-based e-commerce platform, we
           strive to work with retailers and partners who share our commitment to
           environmental and social responsibility.

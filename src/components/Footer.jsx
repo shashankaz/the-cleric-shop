@@ -7,10 +7,9 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="flex flex-col gap-8 px-4 sm:px-8 md:px-16 max-w-7xl mx-auto py-10">
-        {/* <h1 className="md:text-3xl text-2xl uppercase font-mono">The Cleric</h1> */}
         <Image
           src="/logo.png"
-          alt="The Cleric"
+          alt="Cleric"
           width={140}
           height={140}
           className="-translate-x-5 filter invert"
@@ -144,7 +143,7 @@ const Footer = () => {
 
         <div className="flex flex-col-reverse md:flex-row justify-between gap-4 text-sm">
           <h1>
-            &copy; {new Date().getFullYear()} The Cleric. All rights reserved.
+            &copy; {new Date().getFullYear()} Cleric. All rights reserved.
           </h1>
           <ul className="flex gap-4 text-center">
             <li>

@@ -7,12 +7,12 @@ export const metadata = {
 const Careers = () => {
   return (
     <div className="px-4 sm:px-8 md:px-16 max-w-7xl mx-auto min-h-screen py-8">
-      <h1 className="text-3xl font-medium mb-6">Careers at The Cleric</h1>
+      <h1 className="text-3xl font-medium mb-6">Careers at Cleric</h1>
 
       <section className="mb-8">
         <h3 className="text-xl font-semibold mb-4">Join Our Team</h3>
         <p className="mb-4">
-          At The Cleric, we are passionate about connecting customers with
+          At Cleric, we are passionate about connecting customers with
           top-quality products through our affiliate partnerships. We are always
           looking for talented and motivated individuals to join our team and
           help us achieve our mission of enhancing the online shopping

@@ -68,7 +68,7 @@ const Navbar = () => {
           <Link href="/">
             <Image
               src="/logo.png"
-              alt="The Cleric"
+              alt="Cleric"
               width={160}
               height={160}
               className="-translate-y-3"
@@ -113,7 +113,7 @@ const Navbar = () => {
               <div>
                 <Link href="/">
                   <h1 className="font-mono uppercase md:text-3xl text-2xl font-bold flex sm:hidden">
-                    The Cleric
+                    Cleric
                   </h1>
                 </Link>
               </div>

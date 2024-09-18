@@ -12,7 +12,7 @@ const OurStory = () => {
       <section className="mb-8">
         <h3 className="text-xl font-semibold mb-4">Who We Are</h3>
         <p className="mb-4">
-          Welcome to The Cleric, your go-to destination for discovering amazing
+          Welcome to Cleric, your go-to destination for discovering amazing
           products from top retailers. We are passionate about bringing you the
           best deals and high-quality items through our carefully curated
           affiliate links.
@@ -29,7 +29,7 @@ const OurStory = () => {
       <section className="mb-8">
         <h3 className="text-xl font-semibold mb-4">Our Mission</h3>
         <p className="mb-4">
-          At The Cleric, our mission is to simplify your shopping journey by
+          At Cleric, our mission is to simplify your shopping journey by
           offering a curated selection of products through trusted retailers. We
           strive to provide you with:
         </p>
