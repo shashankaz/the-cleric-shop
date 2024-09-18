@@ -8,11 +8,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: {
-    default: "The Cleric",
-    template: "%s | The Cleric",
+    default: "Cleric",
+    template: "%s | Cleric",
   },
   description:
-    "Discover a curated selection of premium products at The Cleric. Shop our exclusive range of high-quality items and unique finds designed to elevate your lifestyle.",
+    "Discover a curated selection of premium products at Cleric. Shop our exclusive range of high-quality items and unique finds designed to elevate your lifestyle.",
 };
 
 export default function RootLayout({ children }) {
