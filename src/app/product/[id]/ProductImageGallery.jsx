@@ -30,11 +30,10 @@ const ProductImageGallery = ({
 
   return (
     <div className="h-[452px] w-full md:w-1/2 flex flex-col justify-between">
-      <div className="h-[340px] w-full rounded-md overflow-hidden">
+      <div className="h-[340px] w-full rounded-md overflow-hidden relative">
         <Image
           src={mainImage}
-          height={1000}
-          width={1000}
+          fill
           className="h-full w-full object-cover cursor-pointer"
           draggable={false}
           onClick={() => openModal(mainImage)}
@@ -44,12 +43,11 @@ const ProductImageGallery = ({
         {images.map((image) => (
           <div
             key={image.id}
-            className="h-24 w-36 rounded-md overflow-hidden cursor-pointer"
+            className="h-24 w-36 rounded-md overflow-hidden cursor-pointer relative"
           >
             <Image
               src={image.src}
-              height={1000}
-              width={1000}
+              fill
               className="h-full w-full object-cover"
               draggable={false}
               onClick={() => openModal(image.src)}
@@ -66,11 +64,10 @@ const ProductImageGallery = ({
             className="relative bg-white p-4 rounded-md"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="h-[70vh] w-[70vw]" onClick={closeModal}>
+            <div className="h-[70vh] w-[70vw] relative" onClick={closeModal}>
               <Image
                 src={modalImage}
-                height={1000}
-                width={1000}
+                fill
                 className="h-full w-full object-cover"
                 draggable={false}
               />

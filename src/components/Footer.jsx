@@ -21,28 +21,28 @@ const Footer = () => {
             <h2 className="text-lg font-semibold mb-4">Shop</h2>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/new-arrivals">
+                <Link prefetch={false} href="/new-arrivals">
                   <span className="hover:text-gray-400 transition duration-200">
                     New Arrivals
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/best-sellers">
+                <Link prefetch={false} href="/best-sellers">
                   <span className="hover:text-gray-400 transition duration-200">
                     Best Sellers
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/categories">
+                <Link prefetch={false} href="/categories">
                   <span className="hover:text-gray-400 transition duration-200">
                     Categories
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/sale">
+                <Link prefetch={false} href="/sale">
                   <span className="hover:text-gray-400 transition duration-200">
                     Sale
                   </span>
@@ -55,28 +55,28 @@ const Footer = () => {
             <h2 className="text-lg font-semibold mb-4">Customer Service</h2>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/contact">
+                <Link prefetch={false} href="/contact">
                   <span className="hover:text-gray-400 transition duration-200">
                     Contact Us
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/faqs">
+                <Link prefetch={false} href="/faqs">
                   <span className="hover:text-gray-400 transition duration-200">
                     FAQs
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/shipping-returns">
+                <Link prefetch={false} href="/shipping-returns">
                   <span className="hover:text-gray-400 transition duration-200">
                     Shipping & Returns
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/order-tracking">
+                <Link prefetch={false} href="/order-tracking">
                   <span className="hover:text-gray-400 transition duration-200">
                     Order Tracking
                   </span>
@@ -89,28 +89,28 @@ const Footer = () => {
             <h2 className="text-lg font-semibold mb-4">About Us</h2>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/our-story">
+                <Link prefetch={false} href="/our-story">
                   <span className="hover:text-gray-400 transition duration-200">
                     Our Story
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/careers">
+                <Link prefetch={false} href="/careers">
                   <span className="hover:text-gray-400 transition duration-200">
                     Careers
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/sustainability">
+                <Link prefetch={false} href="/sustainability">
                   <span className="hover:text-gray-400 transition duration-200">
                     Sustainability
                   </span>
                 </Link>
               </li>
               <li>
-                <Link href="/blog">
+                <Link prefetch={false} href="/blog">
                   <span className="hover:text-gray-400 transition duration-200">
                     Blog
                   </span>
@@ -123,17 +123,29 @@ const Footer = () => {
             <h2 className="text-lg font-semibold mb-4">Social</h2>
             <ul className="flex gap-4 text-2xl">
               <li>
-                <Link href="https://facebook.com/yourpage" passHref>
+                <Link
+                  prefetch={false}
+                  href="https://facebook.com/yourpage"
+                  passHref
+                >
                   <FaFacebook className="hover:text-gray-400 transition duration-200" />
                 </Link>
               </li>
               <li>
-                <Link href="https://instagram.com/yourprofile" passHref>
+                <Link
+                  prefetch={false}
+                  href="https://instagram.com/yourprofile"
+                  passHref
+                >
                   <FaInstagram className="hover:text-gray-400 transition duration-200" />
                 </Link>
               </li>
               <li>
-                <Link href="https://twitter.com/yourprofile" passHref>
+                <Link
+                  prefetch={false}
+                  href="https://twitter.com/yourprofile"
+                  passHref
+                >
                   <FaXTwitter className="hover:text-gray-400 transition duration-200" />
                 </Link>
               </li>
@@ -147,21 +159,21 @@ const Footer = () => {
           </h1>
           <ul className="flex gap-4 text-center">
             <li>
-              <Link href="/privacy-policy">
+              <Link prefetch={false} href="/privacy-policy">
                 <span className="hover:text-gray-400 transition duration-200">
                   Privacy Policy
                 </span>
               </Link>
             </li>
             <li>
-              <Link href="/terms-of-service">
+              <Link prefetch={false} href="/terms-of-service">
                 <span className="hover:text-gray-400 transition duration-200">
                   Terms of Service
                 </span>
               </Link>
             </li>
             <li>
-              <Link href="/cookie-policy">
+              <Link prefetch={false} href="/cookie-policy">
                 <span className="hover:text-gray-400 transition duration-200">
                   Cookie Policy
                 </span>
