@@ -59,7 +59,7 @@ const Mens = ({ searchParams }) => {
       <div className="py-8">
         <div className="flex justify-between items-center mb-8">
           <h1 className="text-2xl md:text-3xl font-medium capitalize">
-            {searchParams.category.slice(0, -1)}'s Collection
+            {searchParams.category.slice(0, -1)}&apos;s Collection
           </h1>
           <select
             aria-label="Sort products by"
