@@ -131,6 +131,7 @@ const ProductPage = ({ params }) => {
           setSelectedSize={setSelectedSize}
           handleAddToCart={handleAddToCart}
           handleAddToWishlist={handleAddToWishlist}
+          loading={loading}
         />
       </div>
       {/* <ProductTabs activeTab={activeTab} handleTabClick={handleTabClick} /> */}

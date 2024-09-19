@@ -8,6 +8,7 @@ const ProductDetails = ({
   setSelectedSize,
   handleAddToCart,
   handleAddToWishlist,
+  loading,
 }) => {
   return (
     <div className="min-h-[452px] w-full md:w-1/2 flex flex-col gap-4 px-0 md:px-6">
@@ -76,12 +77,14 @@ const ProductDetails = ({
         <button
           onClick={handleAddToWishlist}
           className="border rounded px-4 py-2 text-center bg-black text-white border-black hover:bg-gray-800 text-sm md:text-base w-1/2"
+          disabled={loading}
         >
           Add to Wishlist
         </button>
         <button
           onClick={handleAddToCart}
           className="border rounded px-4 py-2 text-center bg-black text-white border-black hover:bg-gray-800 text-sm md:text-base w-1/2"
+          disabled={loading}
         >
           Add to Cart
         </button>

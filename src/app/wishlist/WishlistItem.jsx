@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const WishlistItem = ({ item, onRemove }) => {
+const WishlistItem = ({ item, onRemove, loading }) => {
   return (
     <Link href={`product/${item.product._id}`}>
       <div className="border rounded-lg p-4 flex flex-col items-center justify-between shadow-md">
@@ -27,6 +27,7 @@ const WishlistItem = ({ item, onRemove }) => {
             onRemove(item.product._id);
           }}
           className="mt-4 text-red-500 hover:text-red-700"
+          disabled={loading}
         >
           Remove from Wishlist
         </button>

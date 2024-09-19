@@ -177,7 +177,7 @@ const Cart = () => {
                       handleUpdate(item.product._id, item.quantity - 1);
                     }}
                     className="border px-2 py-1 rounded text-sm"
-                    disabled={item.quantity === 1}
+                    disabled={item.quantity === 1 || loading}
                   >
                     -
                   </button>
@@ -187,6 +187,7 @@ const Cart = () => {
                       handleUpdate(item.product._id, item.quantity + 1);
                     }}
                     className="border px-2 py-1 rounded text-sm"
+                    disabled={loading}
                   >
                     +
                   </button>
@@ -198,6 +199,7 @@ const Cart = () => {
                 handleDelete(item.product._id);
               }}
               className="text-red-500 hover:text-red-700"
+              disabled={loading}
             >
               Remove
             </button>
@@ -207,7 +209,10 @@ const Cart = () => {
 
       <div className="mt-6 flex justify-between items-center pt-4">
         <p className="text-xl font-semibold">Total: ${getTotalPrice()}</p>
-        <button className="bg-black text-white px-6 py-2 rounded-md">
+        <button
+          className="bg-black text-white px-6 py-2 rounded-md"
+          disabled={loading}
+        >
           Proceed to Checkout
         </button>
       </div>

@@ -80,6 +80,7 @@ const Wishlist = () => {
             key={item.product._id}
             item={item}
             onRemove={handleRemoveItem}
+            loading={loading}
           />
         ))}
       </div>
