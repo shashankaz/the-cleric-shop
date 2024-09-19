@@ -132,7 +132,7 @@ const Navbar = () => {
             <ul className="mt-4 px-4 sm:px-8 md:px-16 space-y-4">
               {categories.map((category, index) => (
                 <li key={index}>
-                  <Link href={`/${category.toLowerCase()}`}>
+                  <Link href={`/products?category=${category.toLowerCase()}`}>
                     <p
                       className={`block text-xl px-4 py-2 rounded-md transition-colors duration-200 ${
                         pathname === `/${category.toLowerCase()}`

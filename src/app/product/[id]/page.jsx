@@ -8,7 +8,7 @@ import RelatedProducts from "./RelatedProducts";
 import { useUser } from "@clerk/nextjs";
 import { Toaster, toast } from "sonner";
 
-const ProductPage = ({ params, searchParams }) => {
+const ProductPage = ({ params }) => {
   const [activeTab, setActiveTab] = useState("description");
   const [product, setProduct] = useState(null);
   const [products, setProducts] = useState([]);

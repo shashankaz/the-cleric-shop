@@ -3,7 +3,7 @@
 import ProductPageCard from "@/components/ProductPageCard";
 import { useState, useEffect } from "react";
 
-const Mens = () => {
+const Mens = ({ searchParams }) => {
   const [products, setProducts] = useState([]);
   const [originalProducts, setOriginalProducts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -58,8 +58,8 @@ const Mens = () => {
       <div></div>
       <div className="py-8">
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl md:text-3xl font-medium">
-            Men&apos;s Collection
+          <h1 className="text-2xl md:text-3xl font-medium capitalize">
+            {searchParams.category.slice(0, -1)}'s Collection
           </h1>
           <select
             aria-label="Sort products by"
