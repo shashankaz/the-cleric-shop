@@ -5,14 +5,14 @@ const ProductPageCard = ({ product }) => {
   return (
     <Link href={`product/${product._id}`}>
       <div className="border border-gray-200 rounded-lg shadow-sm p-4 w-full h-full flex flex-col justify-between">
-        <div className="relative w-full h-48 mb-4">
-          <Image
+        <div className="relative w-full h-48 mb-4 bg-gray-200 animate-pulse">
+          {/* <Image
             src="https://images.pexels.com/photos/1084554/pexels-photo-1084554.jpeg?auto=compress&cs=tinysrgb&w=800"
             alt={product.title}
             layout="fill"
             objectFit="cover"
             className="rounded-md"
-          />
+          /> */}
         </div>
         <div>
           <h2 className="text-lg font-semibold mb-2 line-clamp-1">

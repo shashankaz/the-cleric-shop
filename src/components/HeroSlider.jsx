@@ -7,25 +7,25 @@ const HeroSlider = ({ src, title }) => {
         <div className="flex items-center justify-center h-full w-1/2">
           <h1 className="text-3xl w-3/4 text-center">{title}</h1>
         </div>
-        <div className="h-full w-1/2 overflow-hidden">
-          <Image
+        <div className="h-full w-1/2 overflow-hidden bg-gray-200 animate-pulse">
+          {/* <Image
             src={src}
             width={500}
             height={500}
             alt={title}
             className="h-full w-full object-cover"
-          />
+          /> */}
         </div>
       </div>
 
-      <div className="md:hidden relative h-[452px] w-full border">
-        <Image
+      <div className="md:hidden relative h-[452px] w-full border bg-gray-200 animate-pulse">
+        {/* <Image
           src={src}
           width={500}
           height={500}
           alt={title}
           className="h-full w-full object-cover"
-        />
+        /> */}
         <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
           <h1 className="text-2xl text-white text-center px-4">{title}</h1>
         </div>

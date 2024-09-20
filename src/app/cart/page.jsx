@@ -137,8 +137,8 @@ const Cart = () => {
             className="flex items-center justify-between border-b pb-4"
           >
             <div className="flex items-center gap-4">
-              <div className="h-32 w-32 overflow-hidden rounded-md">
-                {item.product.image ? (
+              <div className="h-32 w-32 overflow-hidden rounded-md bg-gray-200 animate-pulse">
+                {/* {item.product.image ? (
                   <Image
                     src={item.product.image}
                     height={1000}
@@ -154,7 +154,7 @@ const Cart = () => {
                     alt="Placeholder Image"
                     className="h-full w-full object-cover"
                   />
-                )}
+                )} */}
               </div>
               <div>
                 <Link href={`product/${item.product._id}`}>

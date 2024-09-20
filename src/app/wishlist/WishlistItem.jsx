@@ -5,8 +5,8 @@ const WishlistItem = ({ item, onRemove, loading }) => {
   return (
     <Link href={`product/${item.product._id}`}>
       <div className="border rounded-lg p-4 flex flex-col items-center justify-between shadow-md">
-        <div className="h-40 w-full rounded-md overflow-hidden mb-4">
-          <Image
+        <div className="h-40 w-full rounded-md overflow-hidden mb-4 bg-gray-200 animate-pulse">
+          {/* <Image
             src={
               item.product.imageUrl ||
               "https://images.pexels.com/photos/3305923/pexels-photo-3305923.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -15,7 +15,7 @@ const WishlistItem = ({ item, onRemove, loading }) => {
             width={400}
             alt={item.product.name}
             className="h-full w-full object-cover"
-          />
+          /> */}
         </div>
         <h2 className="text-lg font-semibold truncate w-full text-center">
           {item.product.name}

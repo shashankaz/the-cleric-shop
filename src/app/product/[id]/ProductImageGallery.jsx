@@ -30,28 +30,28 @@ const ProductImageGallery = ({
 
   return (
     <div className="h-[452px] w-full md:w-1/2 flex flex-col justify-between">
-      <div className="h-[340px] w-full rounded-md overflow-hidden relative">
-        <Image
+      <div className="h-[340px] w-full rounded-md overflow-hidden relative bg-gray-200 animate-pulse">
+        {/* <Image
           src={mainImage}
           fill
           className="h-full w-full object-cover cursor-pointer"
           draggable={false}
           onClick={() => openModal(mainImage)}
-        />
+        /> */}
       </div>
       <div className="flex justify-between gap-4 mt-4">
         {images.map((image) => (
           <div
             key={image.id}
-            className="h-24 w-36 rounded-md overflow-hidden cursor-pointer relative"
+            className="h-24 w-36 rounded-md overflow-hidden cursor-pointer relative bg-gray-200 animate-pulse"
           >
-            <Image
+            {/* <Image
               src={image.src}
               fill
               className="h-full w-full object-cover"
               draggable={false}
               onClick={() => openModal(image.src)}
-            />
+            /> */}
           </div>
         ))}
       </div>
@@ -64,13 +64,13 @@ const ProductImageGallery = ({
             className="relative bg-white p-4 rounded-md"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="h-[70vh] w-[70vw] relative" onClick={closeModal}>
-              <Image
+            <div className="h-[70vh] w-[70vw] relative bg-gray-200 animate-pulse" onClick={closeModal}>
+              {/* <Image
                 src={modalImage}
                 fill
                 className="h-full w-full object-cover"
                 draggable={false}
-              />
+              /> */}
             </div>
           </div>
         </div>
