@@ -13,17 +13,6 @@ const imageSchema = new Schema({
   },
 });
 
-const reviewSchema = new Schema({
-  count: {
-    type: Number,
-    default: 0,
-  },
-  averageRating: {
-    type: Number,
-    default: 0,
-  },
-});
-
 const productSchema = new Schema(
   {
     title: {
@@ -47,7 +36,6 @@ const productSchema = new Schema(
       required: true,
     },
     images: [imageSchema],
-    reviews: [reviewSchema],
     colors: {
       type: [String],
       required: true,
