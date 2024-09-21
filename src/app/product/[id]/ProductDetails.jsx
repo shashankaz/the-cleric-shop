@@ -33,12 +33,12 @@ const ProductDetails = ({
           </div>
         </div>
         <p className="text-xs sm:text-sm md:text-base text-gray-500">
-          ({product.reviews.length} reviews)
+          (0 reviews)
         </p>
       </div>
       <h4 className="text-xl md:text-2xl font-bold">${product.price}</h4>
       <p className="text-sm md:text-base text-gray-700">
-        {product.shortDescription}
+        {product.description}
       </p>
       <div>
         <p className="font-semibold text-sm md:text-base">Color</p>
