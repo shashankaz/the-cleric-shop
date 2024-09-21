@@ -30,6 +30,10 @@ const productSchema = new Schema(
       type: String,
       required: true,
     },
+    slug: {
+      type: String,
+      required: true,
+    },
     price: {
       type: Number,
       required: true,
@@ -41,10 +45,6 @@ const productSchema = new Schema(
     description: {
       type: String,
       required: true,
-    },
-    shortDescription: {
-      type: String,
-      default: null,
     },
     images: [imageSchema],
     reviews: [reviewSchema],
@@ -76,6 +76,10 @@ const productSchema = new Schema(
       type: Number,
       required: true,
       default: 100,
+    },
+    views: {
+      type: Number,
+      default: 0,
     },
     shipping: {
       freeShipping: {
